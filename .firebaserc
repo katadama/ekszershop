@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "ekszer-shop": {
+      "hosting": {
+        "ekszershop": [
+          "ekszer-shop"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "ekszer-shop"
+  }
+}

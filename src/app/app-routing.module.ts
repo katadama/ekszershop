@@ -1,7 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { MainComponent } from './components/main/main.component';
+import { JewelryListComponent } from './components/jewelry-list/jewelry-list.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  {path: '', pathMatch: 'full', component: MainComponent},
+  {path: 'main', component: MainComponent},
+  {path: 'jewlery-list', component: JewelryListComponent},
+  {
+    path: '**',
+    redirectTo: '/main'
+  }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
