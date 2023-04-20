@@ -6,7 +6,7 @@ import { JewelryListComponent } from './components/jewelry-list/jewelry-list.com
 const routes: Routes = [
   {path: '', pathMatch: 'full', component: MainComponent},
   {path: 'main', component: MainComponent},
-  {path: 'jewlery-list', component: JewelryListComponent},
+  {path: 'jewelry-list', component: JewelryListComponent},
   {
     path: '**',
     redirectTo: '/main'

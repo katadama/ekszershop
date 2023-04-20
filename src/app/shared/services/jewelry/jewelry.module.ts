@@ -1,12 +1,18 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { IJewelery } from "./jewelry.interface";
 
+export class Jewelry implements IJewelery{ 
+  id : string;
+  category: string;
+  imageURL : string;
+  name : string;
+  price : number;
 
-
-@NgModule({
-  declarations: [],
-  imports: [
-    CommonModule
-  ]
-})
-export class JewelryModule { }
+  constructor(iJewelry: IJewelery)
+  {
+      this.id = iJewelry.id;
+      this.category = iJewelry.category;
+      this.imageURL = iJewelry.imageURL;
+      this.name = iJewelry.name;
+      this.price = iJewelry.price;
+  }
+}

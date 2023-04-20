@@ -1,2 +1,17 @@
-
-<p>jewelry-list works!</p>
+<div class="jewelry-list-container">
+    <div class="jewelry-list">
+      <div *ngFor="let jewelry of jewelryList" >
+        <mat-card class="card">
+            <div class="cardeffect">
+          <div class="image-container">
+            <img mat-card-image src={{jewelry.imageURL}} class="jewelry-image"/>
+          </div>
+          <mat-card-footer>
+            <div class="jewelry-title">{{jewelry.name}}</div>
+          </mat-card-footer>
+        </div>
+        </mat-card>
+    
+      </div>
+    </div>
+  </div>

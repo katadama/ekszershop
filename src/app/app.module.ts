@@ -17,7 +17,7 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { JewelryListComponent } from './components/jewelry-list/jewelry-list.component';
 import { MainComponent } from './components/main/main.component';
 
-
+import { MatCardModule } from '@angular/material/card';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
@@ -44,8 +44,10 @@ import { FormsModule } from '@angular/forms';
     MatIconModule,
     FlexLayoutModule,
     MatListModule,
+    MatCardModule,
     AngularFireModule,
-    //provideFirebaseApp(() => initializeApp(environment.firebase)),
+    AngularFireModule.initializeApp(environment.firebase),
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
     provideStorage(() => getStorage()),
