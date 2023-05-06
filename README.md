@@ -1,8 +1,9 @@
 # Ekszershop
-Admin user: 
+### Admin user: 
 - email: manager@gmail.com
 - pass: manager123?
-Teszt user:
+
+### Teszt user:
 - email: asd@gmail.com
 - pass: asd123
 
