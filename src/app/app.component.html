@@ -1,39 +1,98 @@
 <mat-sidenav-container>
     <mat-sidenav #sidenav>
       <mat-nav-list>
-        <a mat-list-item [routerLink]="'/main'" (click)="close(sidenav)">
-          <span>Main</span>
+        <a mat-list-item [routerLink]="'/main'" (click)="close(sidenav);setCategory('ring')">
+          <span>Rings</span>
         </a>
-        <a mat-list-item [routerLink]="'/jewelry-list'" (click)="close(sidenav)">
-          <span>Jewelry</span>
+        <a mat-list-item [routerLink]="'/jewelry-list'" (click)="close(sidenav);setCategory('bracelet')">
+          <span>Bracelets</span>
+        </a>
+        <a mat-list-item [routerLink]="'/jewelry-manage'" (click)="close(sidenav);setCategory('necklace')">
+          <span>Necklaces</span>
+        </a>
+        <a mat-list-item (click)="cart()" >
+          <span >Cart</span>
+        </a>
+        <button *ngIf="isAdmin() && loggedInUser"mat-menu-item  [routerLink]="'/jewelry-manage'">Jewelry Manage</button>
+        <button  *ngIf="loggedInUser" mat-menu-item (click)="logout()">Logout</button>
+        <a mat-list-item *ngIf="!loggedInUser" [routerLink]="'/login'" >
+          <span>Login</span>
         </a>
     </mat-nav-list>
     </mat-sidenav>
-    <mat-sidenav-content>
-      <mat-toolbar color="primary">
-        <div fxHide.gt-xs>
-          <button mat-icon-button (click)="onToggleSidenav(sidenav)">
-            <mat-icon>menu</mat-icon>
-          </button>
+    <mat-sidenav-content >
+      <mat-toolbar class="nav-container">
+        <div class="sidenav-container ">
+          <div fxHide.gt-xs class="side-nav">
+            <button mat-icon-button (click)="onToggleSidenav(sidenav)">
+              <mat-icon>menu</mat-icon>
+            </button>
+          </div>
         </div>
-        <div>GALLERY-APP</div>
-        <div fxFlex fxLayout fxLayoutAlign="flex-end" fxHide.xs>
-          <ul fxLayout fxLayoutGap="10px" class="navigation-items">
-            <li>
-              <a mat-list-item [routerLink]="'/main'" >
-                <span>Main</span>
-              </a>
-            </li>
-            <li>
-              <a mat-list-item [routerLink]="'/jewelry-list'" >
-                <span>Jewelry</span>
-              </a>
-            </li>
-          </ul>
+        
+        <div class="nav-left-container nav-container-item">
+          <div fxHide.xs class="nav-left">
+            <ul fxLayout fxLayoutGap="30px" class="navigation-items">           
+              <li>
+                <a mat-list-item (click)="setCategory('ring')" >
+                  <span>Rings</span>
+                </a>
+              </li>
+              <li>
+                <a mat-list-item  (click)="setCategory('bracelet')" >
+                  <span>Bracelets</span>
+                </a>
+              </li><li>
+                <a mat-list-item  (click)="setCategory('necklace')" >
+                  <span>Necklaces</span>
+                </a>
+              </li>
+              
+              
+            </ul>
+          </div>
         </div>
+        <div class="logo-container nav-container-item">
+          <div class="logo"><h1 (click)="setCategory('ring')" >Jewelry SHOP</h1></div>
+        </div>
+        <div class="nav-right-container nav-container-item">
+          <div fxHide.xs class="nav-right">
+            <ul fxLayout fxLayoutGap="20px" class="navigation-items">
+              
+              <li class="cart">
+                <a mat-list-item (click)="cart()" >
+                  <span >Cart</span>
+                </a>
+              </li>
+              <li *ngIf="!(loggedInUser)">
+                <a mat-list-item [routerLink]="'/login'" >
+                  <span>Login</span>
+                </a>
+              </li>
+              <button class="user-info" mat-button [matMenuTriggerFor]="userMenu" *ngIf="loggedInUser">
+                  
+                  
+                  <span class="display-name">{{getUserName()}}</span>
+                  <mat-icon class="icon">expand_more</mat-icon>
+              </button>
+              <mat-menu #userMenu class="menu" >
+                <button *ngIf="isAdmin() && loggedInUser"mat-menu-item  [routerLink]="'/jewelry-manage'">Jewelry Manage</button>
+                <button  *ngIf="loggedInUser" mat-menu-item (click)="logout()">Logout</button>
+              </mat-menu>
+              <!--<li *ngIf="!(loggedInUser)">
+                <a mat-list-item [routerLink]="'/register'" >
+                  <span>Register</span>
+                </a>
+              </li>
+            -->
+            </ul>
+        </div>
+        </div>
+        
       </mat-toolbar>
-      <router-outlet></router-outlet>
+      <router-outlet ></router-outlet>
   </mat-sidenav-content>
+  
 </mat-sidenav-container>
 
 

@@ -1,17 +1,21 @@
-<div class="jewelry-list-container">
+<div class="content-slot">
+  <div class="jewelry-list-container">
     <div class="jewelry-list">
-      <div *ngFor="let jewelry of jewelryList" >
+      <div *ngFor="let jewelry of jewelryList | categoryFilter: category" >
         <mat-card class="card">
             <div class="cardeffect">
           <div class="image-container">
             <img mat-card-image src={{jewelry.imageURL}} class="jewelry-image"/>
           </div>
-          <mat-card-footer>
+          <mat-card-footer class="jewelry-title-container">
             <div class="jewelry-title">{{jewelry.name}}</div>
+            <div class="jewelry-title">{{jewelry.price}} FT</div>
+            <div class="cart"><button mat-raised-button class="cart-button" (click)="addToCart()">Add to Cart</button></div>
           </mat-card-footer>
         </div>
         </mat-card>
-    
       </div>
     </div>
   </div>
+</div>
+

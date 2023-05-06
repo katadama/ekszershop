@@ -1,21 +1,31 @@
+// Fix hot-toast not having style
+@use 'node_modules/@ngneat/hot-toast/src/styles/styles.scss';
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+@import "~@fortawesome/fontawesome-free/css/all.css";
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital@1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Castoro+Titling&family=Raleway:ital,wght@0,100;1,400&family=Ysabeau:wght@100&display=swap');
 /* You can add global styles to this file, and also import other style files */
 
-$bgcolor: azure;
-
-html {
-    background-color: $bgcolor;
-}
 
 html,
 body {
     height: 100%;
-    
 }
 
 body {
     margin: 0;
-    font-family: Roboto, "Helvetica Neue", sans-serif;
-}
+    
+  }
 
 .content-slot{
     min-height: 100vh;

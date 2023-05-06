@@ -1,18 +1,107 @@
+
+
+$font:'Castoro Titling', cursive;
 a {
+    font-family: $font;
     text-decoration: none;
-    color: white;
+    color: rgb(82, 74, 69);
+    cursor: pointer;
+    font-size: 2.8vh;
+    position: relative; // Set the position to relative to position the pseudo-element
+  }
+  
+  a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: rgb(82, 74, 69);
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.3s ease-out; // Add a transition effect to the transform property
+  }
+  a:hover::after,
+  a:active::after {
+    transform: scaleX(1); // Scale the pseudo-element to show the border-bottom
+    transform-origin: bottom left;
+  }
+.user-info{
+    font-family: $font;
+    text-decoration: none;
+    color: rgb(82, 74, 69);
+    font-size: 2.8vh;
+    position: relative; // Set the position to relative to position the pseudo-element
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+   
+}
+.menu{
+    width: 100%;
+    font-family: $font;
 }
 
-a:hover, a:active {
-    color: lightgray;
+.icon{
+    padding-top: 3%;
+    padding-right: 5%;
+    
 }
-
+button{
+    font-family: $font;
+}
 .navigation-items {
     list-style: none;
     padding: 0;
     margin: 0;
 }
+.content-slot{
+    min-height: 100vh;
+    width: 100%;
+}
+.nav-container{
+    height: 10vh;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.nav-container-item{
+    width: 25%;
+}
+.nav-left-container{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
 
+
+
+.logo-container{
+    display: flex;
+    //align-items: center;
+    justify-content: center;
+    .logo{
+        cursor: pointer;
+        h1 {
+            font-family: $font;
+            font-size: 5vh;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.2rem;
+            line-height: 1.2;
+            text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+            color: rgb(39, 39, 39);
+          }
+    }
+}
+.nav-right-container{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
 mat-sidenav {
     width: 40vw;
 }

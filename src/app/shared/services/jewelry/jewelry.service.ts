@@ -11,7 +11,17 @@ import { Jewelry } from "./jewelry.module";
 })
 export class JewelryService {
 
-  constructor(private afs: AngularFirestore) { }
+  formData: Jewelry;
+
+  constructor(private afs: AngularFirestore) {
+    this.formData = {
+      id: "" ,
+      category: "",
+      imageURL: "",
+      name: "",
+      price: 0
+    };
+   }
 
 
   

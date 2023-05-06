@@ -1,0 +1,58 @@
+
+<div class="content-slot">
+
+
+<div class="form-container">
+    <form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)" class="add-form">
+
+        <input class="form-item"type="hidden" name="id" #id="ngModel" [(ngModel)]="formData.id">
+
+        <mat-form-field  class="form-item">
+            <input type="text" matInput name="name" #image="ngModel" [(ngModel)]="formData.name" placeholder="Name" class="form-control" required>
+        </mat-form-field>
+
+        <mat-form-field  class="form-item">
+            <input type="text" matInput name="category" #name="ngModel" [(ngModel)]="formData.category" placeholder="Category" class="form-control" required>
+        </mat-form-field>
+
+        <mat-form-field  class="form-item">
+            <input type="text" matInput name="imageURL" #image="ngModel" [(ngModel)]="formData.imageURL" placeholder="Image URL" class="form-control" required>
+        </mat-form-field>
+
+        <mat-form-field  class="form-item">
+            <input type="number" matInput name="price" #price="ngModel" [(ngModel)]="formData.price" placeholder="Price" class="form-control" required>
+            </mat-form-field>
+
+       
+            <button mat-raised-button  *ngIf="!id.value" type="submit" [disabled]="form.invalid">Add item</button>
+            <button  mat-raised-button *ngIf="id.value" type="submit" [disabled]="form.invalid">Update item</button>
+        
+    </form>
+</div>
+<div class="table-container">
+    <table>
+        <thead>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Image</th>
+            <th>Price</th>
+            <th></th>
+            <th></th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let i of jewelryList">
+                <td>{{i.name}}</td>
+                <td>{{i.category}}</td>
+                <td><img height="100" src="{{i.imageURL}}"></td>
+                <td>{{i.price}} FT</td>
+                <td><button mat-raised-button (click)="onEdit(i)">
+                    Edit
+                </button></td>
+                <td><button mat-raised-button (click)="onDelete(i)" style="color: rgb(255, 21, 0);">
+                    Delete
+                </button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</div>

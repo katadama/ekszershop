@@ -1,15 +1,21 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { MainComponent } from './components/main/main.component';
 import { JewelryListComponent } from './components/jewelry-list/jewelry-list.component';
+import { JewelryManagementComponent } from './components/jewelry-management/jewelry-management.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegistrationComponent } from './components/registration/registration.component';
+import { AdminGuard } from './shared/guard/admin.guard';
 
 const routes: Routes = [
-  {path: '', pathMatch: 'full', component: MainComponent},
-  {path: 'main', component: MainComponent},
-  {path: 'jewelry-list', component: JewelryListComponent},
+  {path: '', pathMatch: 'full', component: JewelryListComponent},
+  {path: 'jewelry-list/:category', component: JewelryListComponent},
+  {path: 'jewelry-list/ring', component: JewelryListComponent},
+  {path: 'jewelry-manage', component: JewelryManagementComponent, canActivate: [AdminGuard]},
+  {path: 'login', component: LoginComponent},
+  {path: 'register', component: RegistrationComponent},
   {
     path: '**',
-    redirectTo: '/main'
+    redirectTo: 'jewelry-list/ring'
   }
 ];
 

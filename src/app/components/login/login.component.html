@@ -1,0 +1,39 @@
+<div class="content-slot">
+  <div class="form-container">
+    <form [formGroup]="loginForm" (ngSubmit)="submit()" class="login">
+      <div class="form-item">
+        <mat-form-field>
+          <input matInput placeholder="Email" formControlName="email" />
+          <mat-error *ngIf="email?.errors?.['required']">Type in your <b>e-mail</b> address</mat-error>
+          <mat-error *ngIf="email?.errors?.['email']">Invalid <b>e-mail</b> address</mat-error>
+        </mat-form-field>
+      </div>
+      
+    <div class="form-item">
+      <mat-form-field>
+        <input
+          matInput
+          placeholder="Password"
+          formControlName="password"
+          type="password"
+        />
+        <mat-error *ngIf="password?.errors?.['required']"
+          >Type in your <b>password</b>
+        </mat-error>
+      </mat-form-field>
+    </div>
+      
+    
+      <div class="form-item">
+        <button mat-raised-button class="button"type="submit">Sign-in</button>
+      </div>
+    
+      <div class="form-item">      
+        <p>You dont have an account yet? <a [routerLink]="'/register'" >Register</a></p>
+      </div>
+      
+      
+    </form>
+  </div>
+  
+</div>
