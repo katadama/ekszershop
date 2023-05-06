@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFirestore, DocumentChangeAction } from '@angular/fire/compat/firestore';
 import { ActivatedRoute } from '@angular/router';
 import { HotToastService } from '@ngneat/hot-toast';
-import { Subject } from 'rxjs';
+import { Subject, takeUntil } from 'rxjs';
 import { Jewelry } from 'src/app/shared/services/jewelry/jewelry.module';
 import { JewelryService } from 'src/app/shared/services/jewelry/jewelry.service';
 
@@ -20,7 +20,9 @@ export class JewelryListComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe(params => {
+    this.route.paramMap.pipe(
+      takeUntil(this.destroy$)
+    ).subscribe(params => {
        this.category = params.get('category') as string;
        this.getJewelryInList();
        console.log(this.category);
@@ -30,7 +32,9 @@ export class JewelryListComponent implements OnInit {
 
   getJewelryInList(): void{
   
-    this.jewelryService.getJewelry().subscribe({
+    this.jewelryService.getJewelry().pipe(
+      takeUntil(this.destroy$)
+    ).subscribe({
       next:(jewelry: DocumentChangeAction<unknown>[]) =>  
       {
         this.jewelryList = jewelry.map(j=>new Jewelry({...j.payload.doc.data() as Jewelry, id: j.payload.doc.id}));
