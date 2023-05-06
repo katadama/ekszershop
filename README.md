@@ -1,4 +1,10 @@
 # Ekszershop
+Admin user: 
+- email: manager@gmail.com
+- pass: manager123?
+Teszt user:
+- email: asd@gmail.com
+- pass: asd123
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.9.
 
